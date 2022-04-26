@@ -11,7 +11,7 @@ def default_subject(args):
         return ts
 
 def list(args):
-    list_source = "{}/{}/theory.json".format(args.storage_path, args.journal)
+    list_source = "{}/{}/theory.json".format(args.storage_path, args.theory)
     table = [['post', 'source']]
     with open(list_source, "r") as f:
         list_posts = json.loads(f.read())
@@ -24,12 +24,12 @@ def list(args):
 
 def add(args):
   
-    json_file = "{}/{}/theory.json".format(args.storage_path, args.journal)
+    json_file = "{}/{}/theory.json".format(args.storage_path, args.theory)
     try:
         with open(json_file, "r") as f:
             journal = json.loads(f.read())
     except FileNotFoundError:
-        print("theory not found: {}".format(args.journal))
+        print("theory not found: {}".format(args.theory))
         print(json_file)
         return False
     # Add post to theory JSON
